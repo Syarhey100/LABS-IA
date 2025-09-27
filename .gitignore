@@ -1,0 +1,6 @@
+# Ignorar archivos de entorno
+.env
+backend-rh/.env
+
+# Local Netlify folder
+.netlify

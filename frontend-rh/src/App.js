@@ -20,23 +20,23 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100 font-sans">
+    <div className="flex h-screen bg-gray-100 font-sans text-gray-800">
       {/* Sidebar */}
-      <aside className="w-64 bg-blue-900 text-white flex flex-col shadow-lg">
+      <aside className="w-64 bg-blue-900 text-white flex flex-col shadow-xl border-r border-blue-800">
         <div className="p-6 text-3xl font-bold border-b border-blue-800 tracking-wide">
-          RH Corp.
+          LABS IA
         </div>
         <nav className="flex flex-col p-4 space-y-3 text-lg">
-          <button className="flex items-center gap-2 text-left px-3 py-2 rounded-lg hover:bg-blue-800 transition">
+          <button className="flex items-center gap-2 text-left px-3 py-2 rounded-lg hover:bg-blue-800 hover:scale-105 transition-transform">
             🤖 <span>Consultar IA</span>
           </button>
-          <button className="flex items-center gap-2 text-left px-3 py-2 rounded-lg hover:bg-blue-800 transition">
+          <button className="flex items-center gap-2 text-left px-3 py-2 rounded-lg hover:bg-blue-800 hover:scale-105 transition-transform">
             📘 <span>Políticas</span>
           </button>
-          <button className="flex items-center gap-2 text-left px-3 py-2 rounded-lg hover:bg-blue-800 transition">
+          <button className="flex items-center gap-2 text-left px-3 py-2 rounded-lg hover:bg-blue-800 hover:scale-105 transition-transform">
             📊 <span>Capacitación</span>
           </button>
-          <button className="flex items-center gap-2 text-left px-3 py-2 rounded-lg hover:bg-blue-800 transition">
+          <button className="flex items-center gap-2 text-left px-3 py-2 rounded-lg hover:bg-blue-800 hover:scale-105 transition-transform">
             ☎ <span>Contacto RH</span>
           </button>
         </nav>
@@ -45,28 +45,28 @@ function App() {
       {/* Main content */}
       <main className="flex-1 p-10 overflow-y-auto bg-gray-50">
         {/* Header */}
-        <header className="mb-8">
+        <header className="mb-10 border-b pb-4 border-gray-300">
           <h1 className="text-4xl font-bold text-blue-900 mb-1">Panel de Recursos Humanos</h1>
-          <p className="text-gray-600 text-lg">Empresa patito</p>
+          <p className="text-gray-500 text-lg">Gestión Inteligente con IA</p>
         </header>
 
-        {/* Dashboard cards */}
+        {/* Dashboard Cards */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          <div className="bg-white shadow-lg rounded-xl p-6 border border-gray-200 hover:shadow-xl transition">
-            <h2 className="text-xl font-semibold text-gray-700 mb-1">👥 Colaboradores</h2>
-            <p className="text-4xl font-bold text-blue-900">10</p>
+          <div className="bg-white shadow-md rounded-xl p-6 border hover:shadow-xl transition">
+            <h2 className="text-lg font-semibold text-gray-600">👥 Colaboradores</h2>
+            <p className="text-3xl font-bold text-blue-900">10</p>
           </div>
-          <div className="bg-white shadow-lg rounded-xl p-6 border border-gray-200 hover:shadow-xl transition">
-            <h2 className="text-xl font-semibold text-gray-700 mb-2">📅 Tareas RH</h2>
-            <ul className="text-gray-600 list-disc list-inside space-y-1">
+          <div className="bg-white shadow-md rounded-xl p-6 border hover:shadow-xl transition">
+            <h2 className="text-lg font-semibold text-gray-600 mb-2">📅 Tareas RH</h2>
+            <ul className="text-gray-700 list-disc list-inside space-y-1">
               <li>Evaluación trimestral</li>
               <li>Capacitación en liderazgo</li>
               <li>Encuesta de clima laboral</li>
             </ul>
           </div>
-          <div className="bg-white shadow-lg rounded-xl p-6 border border-gray-200 hover:shadow-xl transition">
-            <h2 className="text-xl font-semibold text-gray-700 mb-2">🧾 Última consulta</h2>
-            <p className="text-gray-600">{respuesta || "Sin consultas aún"}</p>
+          <div className="bg-white shadow-md rounded-xl p-6 border hover:shadow-xl transition">
+            <h2 className="text-lg font-semibold text-gray-600 mb-2">🧾 Última consulta</h2>
+            <p className="text-gray-700">{respuesta || "Sin consultas aún"}</p>
           </div>
         </section>
 
@@ -94,7 +94,7 @@ function App() {
           )}
         </section>
 
-        {/* Componente de Empleados */}
+        {/* Employee Directory */}
         <Empleados />
       </main>
     </div>
