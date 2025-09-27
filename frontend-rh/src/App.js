@@ -4,7 +4,7 @@ import Empleados from "./Empleados";
 function App() {
   const [pregunta, setPregunta] = useState("");
   const [respuesta, setRespuesta] = useState("");
-  const [sidebarVisible, setSidebarVisible] = useState(false);  // Estado para manejar el sidebar
+  const [sidebarVisible, setSidebarVisible] = useState(false);
 
   const enviarPregunta = async () => {
     try {
@@ -21,12 +21,21 @@ function App() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100 font-sans text-gray-800">
+    <div className="relative min-h-screen bg-gray-100 font-sans text-gray-800">
+      {/* Botón Hamburguesa para móviles */}
+      <button
+        className="md:hidden fixed top-4 left-4 z-50 text-white bg-blue-900 p-3 rounded-lg shadow"
+        onClick={() => setSidebarVisible(!sidebarVisible)}
+      >
+        <span className="block w-6 h-1 bg-white mb-1"></span>
+        <span className="block w-6 h-1 bg-white mb-1"></span>
+        <span className="block w-6 h-1 bg-white"></span>
+      </button>
+
       {/* Sidebar */}
       <aside
-        className={`w-64 bg-blue-900 text-white flex flex-col shadow-xl border-r border-blue-800 transition-transform ${
-          sidebarVisible ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0`}
+        className={`fixed top-0 left-0 h-full w-64 bg-blue-900 text-white flex flex-col shadow-xl border-r border-blue-800 z-40 transform transition-transform duration-300 ease-in-out
+          ${sidebarVisible ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:static md:flex`}
       >
         <div className="p-6 text-3xl font-bold border-b border-blue-800 tracking-wide">
           LABS IA
@@ -47,25 +56,15 @@ function App() {
         </nav>
       </aside>
 
-      {/* Botón para abrir/cerrar el Sidebar en móvil */}
-      <button
-        className="md:hidden fixed top-4 left-4 z-50 text-white bg-blue-900 p-3 rounded-lg"
-        onClick={() => setSidebarVisible(!sidebarVisible)}
-      >
-        <span className="block w-6 h-1 bg-white mb-1"></span>
-        <span className="block w-6 h-1 bg-white mb-1"></span>
-        <span className="block w-6 h-1 bg-white"></span>
-      </button>
-
-      {/* Main content */}
-      <main className="flex-1 p-10 overflow-y-auto bg-gray-50">
-        {/* Header */}
+      {/* Contenido principal */}
+      <main className="md:ml-64 p-6 md:p-10 transition-all duration-300">
+        {/* Encabezado */}
         <header className="mb-10 border-b pb-4 border-gray-300">
           <h1 className="text-4xl font-bold text-blue-900 mb-1">Panel de Recursos Humanos</h1>
           <p className="text-gray-500 text-lg">Gestión Inteligente con IA</p>
         </header>
 
-        {/* Dashboard Cards */}
+        {/* Tarjetas del dashboard */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div className="bg-white shadow-md rounded-xl p-6 border hover:shadow-xl transition">
             <h2 className="text-lg font-semibold text-gray-600">👥 Colaboradores</h2>
@@ -85,7 +84,7 @@ function App() {
           </div>
         </section>
 
-        {/* Chat with AI */}
+        {/* Chat con IA */}
         <section className="bg-white shadow-md rounded-xl p-6 border border-gray-200 mb-10">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">🤖 Consultar a la IA</h2>
           <textarea
@@ -109,7 +108,7 @@ function App() {
           )}
         </section>
 
-        {/* Employee Directory */}
+        {/* Directorio de empleados */}
         <Empleados />
       </main>
     </div>
