@@ -4,6 +4,7 @@ import Empleados from "./Empleados";
 function App() {
   const [pregunta, setPregunta] = useState("");
   const [respuesta, setRespuesta] = useState("");
+  const [sidebarVisible, setSidebarVisible] = useState(false);  // Estado para manejar el sidebar
 
   const enviarPregunta = async () => {
     try {
@@ -22,7 +23,11 @@ function App() {
   return (
     <div className="flex h-screen bg-gray-100 font-sans text-gray-800">
       {/* Sidebar */}
-      <aside className="w-64 bg-blue-900 text-white flex flex-col shadow-xl border-r border-blue-800">
+      <aside
+        className={`w-64 bg-blue-900 text-white flex flex-col shadow-xl border-r border-blue-800 transition-transform ${
+          sidebarVisible ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0`}
+      >
         <div className="p-6 text-3xl font-bold border-b border-blue-800 tracking-wide">
           LABS IA
         </div>
@@ -41,6 +46,16 @@ function App() {
           </button>
         </nav>
       </aside>
+
+      {/* Botón para abrir/cerrar el Sidebar en móvil */}
+      <button
+        className="md:hidden fixed top-4 left-4 z-50 text-white bg-blue-900 p-3 rounded-lg"
+        onClick={() => setSidebarVisible(!sidebarVisible)}
+      >
+        <span className="block w-6 h-1 bg-white mb-1"></span>
+        <span className="block w-6 h-1 bg-white mb-1"></span>
+        <span className="block w-6 h-1 bg-white"></span>
+      </button>
 
       {/* Main content */}
       <main className="flex-1 p-10 overflow-y-auto bg-gray-50">
